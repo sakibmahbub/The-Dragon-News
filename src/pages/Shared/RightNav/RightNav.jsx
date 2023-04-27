@@ -1,7 +1,7 @@
 import React from "react";
 
 const RightNav = () => {
-  return <div>This is right nav</div>;
+  return <div></div>;
 };
 
 export default RightNav;
