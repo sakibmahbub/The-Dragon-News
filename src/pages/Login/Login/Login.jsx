@@ -25,9 +25,6 @@ const Login = () => {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
         <Button className="mb-2 w-100" variant="primary" type="submit">
           Login
         </Button>
