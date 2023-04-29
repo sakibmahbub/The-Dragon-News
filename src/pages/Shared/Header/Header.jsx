@@ -4,8 +4,12 @@ import moment from "moment";
 import { Button, Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <Container className="pt-4">
       <div className="text-center">
@@ -34,9 +38,19 @@ const Header = () => {
               <Nav.Link href="#">Career</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link href="#">Profile</Nav.Link>
+              {user && (
+                <Nav.Link href="#">
+                  <FaUserCircle style={{ fontSize: "2rem" }}></FaUserCircle>
+                </Nav.Link>
+              )}
               <Nav.Link eventKey={2} href="#">
-                <Button variant="dark">Login</Button>
+                {user ? (
+                  <Button variant="dark">Logout</Button>
+                ) : (
+                  <Link to="/login">
+                    <Button variant="dark">Login</Button>
+                  </Link>
+                )}
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
