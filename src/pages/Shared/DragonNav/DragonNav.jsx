@@ -13,9 +13,15 @@ const DragonNav = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto">
-            <Link to="/">Home</Link>
-            <Nav.Link href="#">About</Nav.Link>
-            <Nav.Link href="#">Career</Nav.Link>
+            <Link className="text-decoration-none ms-2" to="/category/0">
+              Home
+            </Link>
+            <Link className="text-decoration-none ms-2" to="/">
+              About
+            </Link>
+            <Link className="text-decoration-none ms-2" to="/">
+              Featured
+            </Link>
           </Nav>
           <Nav>
             {user && <FaUserCircle style={{ fontSize: "2rem" }}></FaUserCircle>}
