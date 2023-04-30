@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -6,6 +6,11 @@ import { AuthContext } from "../../../providers/AuthProvider";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const [accept, setAccept] = useState(false);
+
+  const handleAccepter = (event) => {
+    setAccept(event.target.checked);
+  };
 
   const registerHangle = (event) => {
     event.preventDefault();
@@ -62,13 +67,23 @@ const Register = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
+            onClick={handleAccepter}
             type="checkbox"
             name="accept"
-            label="Accept terms & conditions"
+            label={
+              <>
+                Accept <Link to="/terms">terms & conditions</Link>
+              </>
+            }
           />
         </Form.Group>
-        <Button className="mb-2 w-100" variant="primary" type="submit">
-          Login
+        <Button
+          disabled={!accept}
+          className="mb-2 w-100"
+          variant="primary"
+          type="submit"
+        >
+          Register
         </Button>
         <br />
         <Form.Text>
