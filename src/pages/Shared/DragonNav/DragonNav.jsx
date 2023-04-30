@@ -6,7 +6,12 @@ import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const DragonNav = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOutUser()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
     <Navbar collapseOnSelect expand="lg" bg="white" variant="white">
       <Container>
@@ -26,7 +31,9 @@ const DragonNav = () => {
           <Nav>
             {user && <FaUserCircle style={{ fontSize: "2rem" }}></FaUserCircle>}
             {user ? (
-              <Button variant="dark">Logout</Button>
+              <Button onClick={handleLogout} variant="dark">
+                Logout
+              </Button>
             ) : (
               <Link to="/login">
                 <Button variant="dark">Login</Button>
